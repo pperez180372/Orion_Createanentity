@@ -134,19 +134,19 @@ public class MainActivity extends ActionBarActivity {
             String payload = "{" +
                     "    \"contextElements\": [" +
                     "        {" +
-                    "            \"type\": \"Room\"," +
+                    "            \"type\": \"Transductor\"," +
                     "            \"isPattern\": \"false\"," +
-                    "            \"id\": \"Room1\"," +
+                    "            \"id\": \""+tEntidad.getText().toString()+"\"," +
                     "            \"attributes\": [" +
                     "            {" +
                     "                \"name\": \"temperature\"," +
                     "                \"type\": \"float\"," +
-                    "                \"value\": \"23\"" +
+                    "                \"value\": \""+tTemperatura.getText().toString()+"\"" +
                     "            }," +
                     "            {" +
-                    "                \"name\": \"pressure\"," +
+                    "                \"name\": \"humidity\"," +
                     "                \"type\": \"integer\"," +
-                    "                \"value\": \"720\"" +
+                    "                \"value\": \""+tTemperatura.getText().toString()+"\"" +
                     "            }" +
                     "            ]" +
                     "        }" +
@@ -190,6 +190,8 @@ public class MainActivity extends ActionBarActivity {
                 is = conn.getInputStream();
 
                 if (rc == 200) {
+
+                    resp="OK";
                     //read the result from the server
                     rd = new BufferedReader(new InputStreamReader(is));
                     //res=rd.readLine();
@@ -198,27 +200,14 @@ public class MainActivity extends ActionBarActivity {
                     System.out.println("headers: " + rr.toString());
 
                 } else {
-                    rr = null;
-                    System.out.println("http response code error: " + rc + "\n");
-
-                }
-                if (rc == 201) {
-                    //read the result from the server
-                    rd = new BufferedReader(new InputStreamReader(is));
-                    //res=rd.readLine();
-                    // cabeceras de recepcion
-                    rr = conn.getHeaderFields();
-                    System.out.println("headers: " + rr.toString());
-
-                } else {
-                    rr = null;
+                    resp="ERROR de conexión";
                     System.out.println("http response code error: " + rc + "\n");
 
                 }
 
 
-                String cad=rr.get("X-Subject-Token").get(0);
-                return cad;
+
+                return resp;
 
 
             } catch (MalformedURLException e) {
