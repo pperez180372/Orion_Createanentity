@@ -134,9 +134,10 @@ public class MainActivity extends ActionBarActivity {
             String payload = "{" +
                     "    \"contextElements\": [" +
                     "        {" +
-                    "            \"type\": \"Transductor\"," +
+                    "            \"type\": \"Room\"," +
                     "            \"isPattern\": \"false\"," +
-                    "            \"id\": \""+tEntidad.getText().toString()+"\"," +
+                    //"            \"id\": \""+tEntidad.getText().toString()+"\"," +
+                    "            \"id\": \""+"Room1"+"\"," +
                     "            \"attributes\": [" +
                     "            {" +
                     "                \"name\": \"temperature\"," +
@@ -146,7 +147,7 @@ public class MainActivity extends ActionBarActivity {
                     "            {" +
                     "                \"name\": \"humidity\"," +
                     "                \"type\": \"integer\"," +
-                    "                \"value\": \""+tTemperatura.getText().toString()+"\"" +
+                    "                \"value\": \""+tHumedad.getText().toString()+"\"" +
                     "            }" +
                     "            ]" +
                     "        }" +
